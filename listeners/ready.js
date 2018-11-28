@@ -1,4 +1,5 @@
 const { Listener } = require('discord-akairo');
+const Logger = require("../utils/Logger");
 
 class ReadyListener extends Listener {
   constructor(){
@@ -9,7 +10,8 @@ class ReadyListener extends Listener {
   }
 
   exec(){
-    console.log("Bot Ready!");
+    Logger.Info(`${this.client.user.tag}, ready to serve ${this.client.users.size} users in ${this.client.guilds.size} servers`);
+    this.client.user.setActivity(`Learning JavaScript`);
   }
 }
 
