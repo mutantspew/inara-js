@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const momment = require('moment');
+const moment = require('moment');
 const util = require('util');
 
 class Logger {
@@ -33,7 +33,7 @@ class Logger {
 
   // write function
   static write(msg, { color = 'grey', tag = 'Log', error = false} = {}){
-    const timestamp = chalk.cyan(`[${momment().format('MM-DD-YYYY HH:mm:ss')}]: `);
+    const timestamp = chalk.cyan(`[${moment().format('MM-DD-YYYY HH:mm:ss')}]: `);
     const Tag = chalk.bold(`(${tag}) `);
     const text = chalk[color](this.sterilize(msg));
 
