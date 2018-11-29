@@ -7,6 +7,9 @@ const Logger = require("./utils/Logger");
 const client = new AkairoClient({
   ownerID: BotConfig.ownerID,
   prefix: BotConfig.prefix,
+  handleEdits: true,
+  commandUtil: true,
+  commandUtilLifetime: 600000,
   commandDirectory: './commands/',
   inhibitorDirectory: './inhibitors/',
   listenerDirectory: './listeners',

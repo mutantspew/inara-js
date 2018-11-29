@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-const Logger = require("../utils/Logger");
+// const Logger = require("../utils/Logger");
 
 class HelpCommand extends Command {
   constructor(){
@@ -52,11 +52,43 @@ class HelpCommand extends Command {
       embed.addField('Aliases:', `\`${command.aliases.join(' ')}\``, true);
     }
 
-    return message.util.send({embed});
+    return message.util.send({ embed });
   }
 
   async execCommandList(message){
-    return undefined;
+    const embed = this.client.util.embed()
+    .setColor(0xFFAC33)
+    .addField('Command List', [
+      'This is a list of commands.',
+      'To view details for a command, do `-help <command>`.'
+    ]);
+
+    for(const category of this.handler.categories.values()){
+      const title = {
+        general: 'General',
+        moderation: 'Moderation'
+      }[category.id];
+
+      if(title) embed.addField(title, `\`${category.map(cmd => cmd.aliases[0]).join(' ')}\``);
+    }
+
+    const shouldReply = message.guild && message.channel.permissionsFor(this.client.user).has('SEND_MESSAGES');
+
+    try{
+      await message.author.send({ embed });
+      if(shouldReply) return message.util.reply('I\'ve sent you a DM with the command list.');
+    }
+    catch(err){
+      if(shouldReply){
+        return message.util.send({ embed: {
+          title: 'Inara',
+          color: 0x7CFC00,
+          description: `${message.author}: Unable to send DM.`
+        }});
+      }
+    }
+
+    return null;
   }
 }
 

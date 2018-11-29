@@ -27,7 +27,7 @@ class Logger {
     this.write(msg, { color, tag, error: true });
   }
 
-  static Command(msg, { color = 'orange', tag = 'Error'} = {}){
+  static Command(msg, { color = 'magenta', tag = 'Error'} = {}){
     this.write(msg, { color, tag });
   }
 

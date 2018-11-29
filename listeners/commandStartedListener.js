@@ -16,3 +16,5 @@ class CommandStartedListener extends Listener {
     Logger.Command(`--> ${command.id}`, { tag });
   }
 }
+
+module.exports = CommandStartedListener;
