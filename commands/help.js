@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo');
-// const Logger = require("../utils/Logger");
+const Logger = require("../utils/Logger");
 
 class HelpCommand extends Command {
   constructor(){
@@ -68,6 +68,13 @@ class HelpCommand extends Command {
         general: 'General',
         moderation: 'Moderation'
       }[category.id];
+
+      // Logger.Debug(this.handler.categories.values().length);
+
+      if(title){
+         Logger.Debug(title)
+         Logger.Debug(`-->>${category.map(cmd => cmd.aliases[0]).join(' ')}`);
+      }
 
       if(title) embed.addField(title, `\`${category.map(cmd => cmd.aliases[0]).join(' ')}\``);
     }

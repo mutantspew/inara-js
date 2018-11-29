@@ -4,7 +4,7 @@ class CleanCommand extends Command {
   constructor(){
     super('clean', {
       aliases: ['clean', 'purge', 'clear'],
-      group: 'moderation',
+      category: 'moderation',
       channel: 'guild',
       userPermissions: ['MANAGE_MESSAGES'],
       clientPermissions: ['MANAGE_MESSAGES'],
