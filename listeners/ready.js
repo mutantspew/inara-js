@@ -10,8 +10,21 @@ class ReadyListener extends Listener {
   }
 
   exec(){
+    const Status = ['@inara help', 
+                    `${this.client.commandHandler.prefix}help`, 
+                    'Learning ES 6+ JavaScript', 
+                    'What\'s an ECMA Script?', 
+                    'Ping for DAAAAYYYZZZZZ!']
+    
     Logger.Info(`${this.client.user.tag}, ready to serve ${this.client.users.size} users in ${this.client.guilds.size} servers`);
-    this.client.user.setActivity(`Learning JavaScript`);
+    
+    const Interval = 1 * 60 * 1000; //minutes * seconds * 1000 = milliseconds
+    
+    // this.client.user.setActivity(`Learning JavaScript`);
+    return setInterval(() => {
+      const randomStatus = Math.floor(Math.random() * Status.length)
+      this.client.user.setActivity(`${Status[randomStatus]}`);
+    }, Interval);
   }
 }
 
