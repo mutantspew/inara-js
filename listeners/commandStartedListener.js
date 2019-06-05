@@ -13,7 +13,7 @@ class CommandStartedListener extends Listener {
   exec(message, command){
     const tag = message.guild ? message.guild.name : `${message.author.tag}/PM`;
 
-    Logger.Command(`--> ${command.id}`, { tag });
+    Logger.Command(`--> ${message.author.tag} ran command ${command.id}`, { tag });
   }
 }
 

@@ -11,7 +11,6 @@ class ReadyListener extends Listener {
 
   exec(){
     const Status = ['@inara help', 
-                    `${this.client.commandHandler.prefix}help`, 
                     'Learning ES 6+ JavaScript', 
                     'What\'s an ECMA Script?', 
                     'Ping for DAAAAYYYZZZZZ!']

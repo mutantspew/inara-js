@@ -1,4 +1,5 @@
 const { Command } = require('discord-akairo');
+const Logger = require('../utils/Logger');
 
 class SayCommand extends Command {
   constructor(){
@@ -7,14 +8,29 @@ class SayCommand extends Command {
       category: 'general',
       description: { content: 'Bot will say something' },
       channelRestriction: 'guild',
-      userPermissions: ['MANAGE_MESSAGES']
+      userPermissions: ['MANAGE_MESSAGES'],
+      args: [
+        {
+          id: 'text',
+          // type: 'string'
+          match: 'content',
+          prompt: {
+            start: 'What would you like the bot to say?'
+          }
+        }
+      ]
     });
   }
 
-  exec(message, args){
-    let botmessage = args.join(" ");
+  exec(message, { text }){
+    Logger.Debug(`${message.content}`);
+    Logger.Debug(`${text}`);
+
+    // let botMessage = text.join(' ');
+    // Logger.Debug(botMessage);
+
     message.delete().catch();
-    message.channel.send(botmessage);
+    message.channel.send(text);
   }
 }
 

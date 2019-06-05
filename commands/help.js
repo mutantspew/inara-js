@@ -60,13 +60,14 @@ class HelpCommand extends Command {
     .setColor(0xFFAC33)
     .addField('Command List', [
       'This is a list of commands.',
-      'To view details for a command, do `-help <command>`.'
+      'To view details for a command, do `help <command>`.'
     ]);
 
     for(const category of this.handler.categories.values()){
       const title = {
         general: 'General',
-        moderation: 'Moderation'
+        moderation: 'Moderation',
+        owner: 'Owner'
       }[category.id];
 
       // Logger.Debug(this.handler.categories.values().length);

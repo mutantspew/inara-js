@@ -11,7 +11,7 @@ class GuildCreateListener extends Listener {
   }
 
   exec(guild){
-    Logger.Info(`${guild.id}: ${guild} created!`)
+    // Logger.Info(`${guild.id}: ${guild} created!`)
   }
 }
 

@@ -30,6 +30,8 @@ class PrefixCommand extends Command {
         examples: ['*', '-', '.', '!']
       }
     });
+
+    this.disable();
   }
 
   async exec(message, { prefix }){
